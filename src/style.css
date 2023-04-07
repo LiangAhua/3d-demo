@@ -65,5 +65,44 @@ a:hover {
 
 :root {
   --bg-base: rgba(23, 49, 71, 0.8);
-  --base-color: #fff
+  --base-color: #fff;
+  --text-color: #fff;
+  --sub-title-color: #cdcdcd;
+  --primary-color: rgba(0, 138, 255, 0.9);
+  --primary-half-color: rgba(0, 138, 255, 0.5);
+  --sub-color: #26ddff;
+  --danger-color: #f75165;
+  --warning-color: #ff8041;
+  --success-color: #18af92;
+  --base-color: #ffffff;
+  --content-color: #cdcdcd;
+  --text-color: #ffffff;
+  --hover-btn-bg: #3ea6ff;
+  --click-btn-bg: #015dab;
+  --disable-btn-bg: #cdcdcd;
+  --base-border: #ffffff;
+  --select-bg: rgba(0, 138, 255, 0.2);
+  --bg-base: rgba(23, 49, 71, 0.8);
+  --odd-table-bg: rgba(0, 138, 255, 0.06);
+  --bg-title: #0f3453;
+  --base-border-color: #b9b9b9;
+  --list-active: linear-gradient(90deg, rgba(0, 138, 255, 0) 0%, rgba(0, 138, 255, 0.58) 53%, rgba(0, 138, 255, 0.02) 100%);
+
+  --title-active: linear-gradient(0deg, rgba(0, 138, 255, 0.6) 0%, rgba(0, 138, 255, 0) 100%);
+  --title-text-active: #ffffff;
+
+  --menu-emb: url(../assets/images/sub-menu-emb.png);
+
+  --msg-title-bg: url(../assets/images/msg-title-bg.png);
+  --msg-title-color: #c7d3dd;
+  --msg-content-bg: url("../assets/images/border-image-base.png");
+
+  --alert-title-color: #0089fe;
+
+  --scrollbar-thumb: #134875;
+  --scrollbar-track: #173147;
+
+  --sub-title-color: #cdcdcd;
+
+  --collapse-title-bg: url("@/components/mars-ui/assets/images/tab-title.png");
 }

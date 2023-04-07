@@ -9,8 +9,16 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AForm: typeof import('ant-design-vue/es')['Form']
+    AFormItem: typeof import('ant-design-vue/es')['FormItem']
     ASlider: typeof import('ant-design-vue/es')['Slider']
+    Control: typeof import('./src/components/control/index.vue')['default']
+    ControlDisplay: typeof import('./src/components/ControlDisplay/index.vue')['default']
+    Display: typeof import('./src/components/display/index.vue')['default']
     GeojsonBasis: typeof import('./src/components/GeojsonBasis/index.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    MarsDialog: typeof import('./src/components/ui/mars-dialog/index.vue')['default']
+    MarsGui: typeof import('./src/components/ui/mars-gui/index.vue')['default']
+    TerrainProvider: typeof import('./src/components/terrainProvider/index.vue')['default']
   }
 }

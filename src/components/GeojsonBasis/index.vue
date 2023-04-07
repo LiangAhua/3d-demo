@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="item">
       <div @click="showChinaLine">省界线</div>
       <div @click="showPlanningSurface">规划面</div>
@@ -15,7 +15,7 @@
     </div>
     <div class="f-pt">
       <span>透明度:</span>
-      <a-slider :min="0" :max="1" :step="0.1" v-model:value="value1" @change="onOpacityChange" />
+      <a-slider :min="0" :max="1" :step="0.1" v-model:value="layerOpacity" @change="onOpacityChange" />
     </div>
   </div>
 </template>
@@ -23,8 +23,6 @@
 <script lang="ts" setup>
 import { ref } from "vue"
 import * as mapWork from "./map.js"
-
-const value1 = ref(0);
 
 function setDefuatData() {
   layerOpacity.value = 1.0
@@ -118,37 +116,3 @@ const onOpacityChange = () => {
   mapWork.graphicLayer.opacity = layerOpacity.value
 }
 </script>
-<style scoped lang="less">
-.mars-drop-bg {
-  border-bottom: 1px solid #008aff70;
-  border-left: 1px solid #008aff70;
-  border-right: 1px solid #008aff70;
-  box-shadow: 0px 4px 15px 1px rgba(2, 33, 59, 0.7);
-  border-radius: 0px;
-  background: linear-gradient(to left, var(--base-color), var(--base-color)) left bottom no-repeat,
-    linear-gradient(to bottom, var(--base-color), var(--base-color)) left bottom no-repeat,
-    linear-gradient(to left, var(--base-color), var(--base-color)) right bottom no-repeat,
-    linear-gradient(to left, var(--base-color), var(--base-color)) right bottom no-repeat;
-  background-size: 1px 10px, 10px 1px, 1px 10px, 10px 1px;
-  background-color: var(--bg-base);
-}
-.container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  box-sizing: border-box;
-  padding: 10px 10px 10px 10px;
-  border-radius: 4px;
-  // z-index: 999 !important;
-  border-bottom: 1px solid #008aff70;
-  border-left: 1px solid #008aff70;
-  border-right: 1px solid #008aff70;
-  background-color: var(--bg-base);
-  color: #fff;
-  .mars-drop-bg();
-  
-  .item > div {
-    cursor: pointer;
-  }
-}
-</style>

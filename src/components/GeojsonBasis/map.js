@@ -174,7 +174,7 @@ export function showPoint() {
  * 全国省界
  */
 export function showChinaLine() {
-  // removeLayer()
+  removeLayer()
 
   graphicLayer = new mars3d.layer.GeoJsonLayer({
     name: "全国省界",

@@ -14,6 +14,14 @@ export default defineConfig({
     },
     extensions: [".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        additionalData: `@import "${path.resolve(__dirname, "src/components/ui/base.less")}";`
+      }
+    }
+  },
   plugins: [
     vue(),
     vitePluginMars3d(),
