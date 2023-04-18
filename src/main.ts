@@ -1,4 +1,4 @@
-import "mars3d-cesium/Build/Cesium/Widgets/widgets.css"
+// import "mars3d-cesium/Build/Cesium/Widgets/widgets.css"
 import "mars3d/dist/mars3d.css"
 import 'font-awesome/css/font-awesome.min.css';
 import { createApp } from 'vue'

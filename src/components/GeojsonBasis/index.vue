@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="item">
+      <div @click="showJC">嘉诚</div>
       <div @click="showChinaLine">省界线</div>
       <div @click="showPlanningSurface">规划面</div>
       <div @click="showDraw">标绘数据</div>
@@ -24,6 +25,8 @@
 import { ref } from "vue"
 import * as mapWork from "./map.js"
 
+// http://192.168.160.202:9098/datasets/12/features/bounds
+
 function setDefuatData() {
   layerOpacity.value = 1.0
 
@@ -33,6 +36,11 @@ function setDefuatData() {
     enabledTooltip: false,
     enabledRightMenu: false
   })
+}
+
+const showJC = () => {
+  setDefuatData()
+  mapWork.showJC()
 }
 
 const showDraw = () => {

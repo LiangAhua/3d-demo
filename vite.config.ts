@@ -29,4 +29,16 @@ export default defineConfig({
       resolvers: [AntDesignVueResolver()],
     })
   ],
+  base: '/',
+  server: {
+    port: '3000',
+    host: '0.0.0.0',
+    proxy: {
+      '/api': {
+        target: 'http://192.168.160.202:9098',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    },
+},
 })

@@ -9,16 +9,24 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
+    ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     ASlider: typeof import('ant-design-vue/es')['Slider']
+    ASpace: typeof import('ant-design-vue/es')['Space']
+    ATabPane: typeof import('ant-design-vue/es')['TabPane']
+    ATabs: typeof import('ant-design-vue/es')['Tabs']
     Control: typeof import('./src/components/control/index.vue')['default']
     ControlDisplay: typeof import('./src/components/ControlDisplay/index.vue')['default']
     Display: typeof import('./src/components/display/index.vue')['default']
     GeojsonBasis: typeof import('./src/components/GeojsonBasis/index.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    LocationTo: typeof import('./src/components/ui/location-to.vue')['default']
     MarsDialog: typeof import('./src/components/ui/mars-dialog/index.vue')['default']
     MarsGui: typeof import('./src/components/ui/mars-gui/index.vue')['default']
+    Measure: typeof import('./src/components/measure/index.vue')['default']
+    MeasureSection: typeof import('./src/components/measure-section/index.vue')['default']
     TerrainProvider: typeof import('./src/components/terrainProvider/index.vue')['default']
   }
 }

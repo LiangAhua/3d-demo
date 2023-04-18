@@ -1,31 +1,41 @@
 
 <template>
   <div id="mars3dContainer" class="mars3d-container"></div>
-  <mars-dialog :visible="true" right="10" top="10" width="200">
-    <GeojsonBasis></GeojsonBasis>
-    <TerrainProvider></TerrainProvider>
-    <ContorlDisplay></ContorlDisplay>
+  <mars-dialog :visible="true" right="10" top="10">
+    <a-tabs v-model:activeKey="activeKey">
+      <a-tab-pane key="2" tab="控件"><ContorlDisplay></ContorlDisplay></a-tab-pane>
+      <a-tab-pane key="1" tab="地形" force-render><TerrainProvider></TerrainProvider></a-tab-pane>
+      <a-tab-pane key="0" tab="图层"><GeojsonBasis></GeojsonBasis></a-tab-pane>
+      <a-tab-pane key="3" tab="测算"><measure></measure></a-tab-pane>
+      <a-tab-pane key="4" tab="剖面分析"><MeasureSection></MeasureSection></a-tab-pane>
+    </a-tabs>
   </mars-dialog>
+  
 </template>
 
 <script setup lang="ts">
 import * as mars3d from "mars3d";
-import { onMounted } from "vue";
+import { Ref, onMounted, ref } from "vue";
 import GeojsonBasis from './GeojsonBasis/index.vue'
 import TerrainProvider from '@/components/terrainProvider/index.vue'
 
 import ContorlDisplay from '@/components/ControlDisplay/index.vue'
+import measure from '@/components/measure/index.vue'
 
 import MarsDialog from "@/components/ui/mars-dialog/index.vue"
 
 import * as mapWork from "@/components/GeojsonBasis/map.js"
 import * as t from "@/components/terrainProvider/map.js"
 import * as c from "@/components/ControlDisplay/map"
+import * as m from "@/components/measure/map"
+import * as e from "@/components/measure-section/map.js"
+import MeasureSection from "@/components/measure-section/index.vue"
 
 const configUrl = "config.json";
 
 // 用于存放地球组件实例
 let map: mars3d.Map // 地图对象
+let activeKey: Ref<string> = ref('2')
 
 onMounted(() => {
   var mapOptions = {
@@ -75,6 +85,8 @@ const initMars3d = (option: any) => {
   mapWork.onMounted(map)
   t.onMounted(map)
   c.onMounted(map)
+  m.onMounted(map)
+  e.onMounted(map)
 }
 
 </script>
@@ -195,36 +207,7 @@ const initMars3d = (option: any) => {
   color: #fff;
 }
 
-/**cesium tileset调试信息面板*/
-.cesium-viewer-cesiumInspectorContainer {
-  top: 10px;
-  left: 10px;
-  right: auto;
-}
-.cesium-cesiumInspector {
-  background-color: rgba(23, 49, 71, 0.8);
-}
 
-/**覆盖mars3d内部控件的颜色等样式*/
-.mars3d-compass .mars3d-compass-outer {
-  fill: rgba(23, 49, 71, 0.8);
-}
-.mars3d-contextmenu-ul,
-.mars3d-sub-menu {
-  background-color: rgba(23, 49, 71, 0.8);
-
-  > li > a:hover,
-  > li > a:focus,
-  > li > .active {
-    background-color: #3ea6ff;
-  }
-
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
-    background-color: #3ea6ff;
-  }
-}
 
 /* Popup样式*/
 .mars3d-popup-color {
@@ -306,6 +289,43 @@ const initMars3d = (option: any) => {
   background-color: aqua !important;
   /* border-radius: 30px; */
   box-shadow: 0 0 10px rgb(244, 250, 250);
+}
+
+.marsGreenGradientPnl {
+  width: 100px;
+  text-align: center;
+  background-image: linear-gradient(to right, #565d39, #00ffc3);
+  position: absolute;
+  left: -56px;
+  bottom: 28px;
+  cursor: default;
+  padding: 5px;
+  border: 1px solid #9c9944e8;
+}
+
+.marsGreenGradientPnl:hover {
+  border: 1px solid rgb(9, 255, 0);
+}
+
+.marsGreenGradientPnl::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  bottom: -30px;
+  height: 30px;
+  border-left: 2px dashed #c5e22770;
+}
+
+.marsGreenGradientPnl-highlight {
+  border: 2px solid yellow;
+}
+
+.marsGreenGradientPnl-highlight::before {
+  border-left: 2px dashed yellow !important;
+}
+
+:deep(.ant-tabs) {
+  color: #fff !important;
 }
 
 </style>

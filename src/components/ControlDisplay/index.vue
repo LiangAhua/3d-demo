@@ -13,7 +13,7 @@ const options: GuiItem[] = [
     type: "checkbox",
     field: "button",
     label: "按钮",
-    value: ["1", "2", "3", "4", "5", "6", "7", "8"],
+    value: [],
     change(data) {
       chooseButton(data)
     },
@@ -64,7 +64,7 @@ const options: GuiItem[] = [
     type: "checkbox",
     field: "pannel",
     label: "面板",
-    value: ["1", "2", "3", "4", "5"],
+    value: [],
     change(data) {
       choosePannel(data)
     },

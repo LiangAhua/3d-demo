@@ -24,7 +24,7 @@ export function onMounted(mapInstance) {
   //   console.log("移除了图层", event)
   // })
 
-  showDraw()
+  // showDraw()
 }
 
 /**
@@ -547,6 +547,80 @@ export function showMonomer() {
   graphicLayer.on(mars3d.EventType.load, function (event) {
     console.log("数据加载完成", event)
   })
+}
+
+export function showJC() {
+  removeLayer()
+  const url = '/api/datasets/12/features/bounds';
+  const data = {
+    bounds: {
+      maxx: 151.08398437500003,
+      maxy: 58.031372421776396,
+      minx: 57.65625000000001,
+      miny: -0.5273363048115043
+    },
+    encoding_type: "geojson",
+    has_geometry: true,
+    has_property: true,
+    limit: 3000
+  };
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    let {data: features} = data
+    console.log('features', features)
+
+    graphicLayer = new mars3d.layer.GeoJsonLayer({
+      name: "省级行政区",
+      data: {features: features, type: "FeatureCollection"},
+      symbol: {
+        type: "polygonP",
+        styleOptions: {
+          fill: true,
+          color: '#ffffff',
+          // opacity: 0.01,
+          opacity: 0.3,
+          outline: true,
+          outlineStyle: {
+            color: "#000",
+            width: 3,
+            opacity: 0.5
+          },
+          // 高亮时的样式
+          highlight: {
+            type: "click",
+            color: "#ffff00"
+          },
+          label: {
+            text: "{name}",
+            font_size: 20,
+            color: "#ffffff",
+            outline: false,
+            setHeight: 10000
+          }
+        },
+      },
+      popup: "{name}",
+      flyTo: true
+    })
+    map.addLayer(graphicLayer)
+  
+    // 绑定事件
+    graphicLayer.on(mars3d.EventType.load, function (event) {
+      console.log("数据加载完成", event)
+    })
+    graphicLayer.on(mars3d.EventType.click, function (event) {
+      console.log("单击了图层", event)
+    })
+  })
+  .catch(error => console.error(error));
+
 }
 
 /**

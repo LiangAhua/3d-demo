@@ -816,4 +816,9 @@ export default {
   -webkit-animation-name: fadeInCenter;
   animation-name: fadeInCenter;
 }
+
+
+:deep(.ant-tabs) {
+  color: #fff !important;
+}
 </style>

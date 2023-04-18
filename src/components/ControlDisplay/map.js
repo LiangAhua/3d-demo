@@ -34,6 +34,21 @@ export function onMounted(mapInstance) {
   control.on(mars3d.EventType.click, function (event) {
     console.log("您单击了帮助按钮", event)
   })
+
+  var val = false
+  map.controls.geocoder.show = val
+  map.controls.homeButton.show = val
+  map.controls.baseLayerPicker.show = val
+  map.controls.fullscreenButton.show = val
+  map.controls.vrButton.show = val
+  map.controls.navigationHelpButton.show = val
+  map.controls.sceneModePicker.show = val
+  map.controls.zoom.show = val
+  map.controls.locationBar.show = val
+  map.controls.clockAnimate.show = val
+  map.controls.timeline.show = val
+  map.controls.compass.show = val
+  map.controls.distanceLegend.show = val
 }
 
 /**
